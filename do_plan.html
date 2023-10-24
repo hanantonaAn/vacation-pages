@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" />
+    <script src="chart_logic.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans&display=swap" rel="stylesheet">
+    <title>Do plan</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header_container">
+            <div class="header_right">
+                <button class="btn_burger-service">
+                    <img src="/public/menu.svg" />
+                    <p>Сервисы</p>
+                </button>
+                <div class="header_uniName">
+                    <img class="uniLogotype" src="/public/logo.svg" alt="logoKFU" />
+                    <div class="divider"></div>
+                    <p>Модуль Отпуск</p>
+                </div>
+            </div>
+
+            <div class="header-left">
+                <div class="header_icons">
+                    <div class="header_icon_container">
+                        <img src="/public/search.svg" alt="search" />
+                    </div>
+                    <div class="header_icon_container">
+                        <img src="/public/message.svg" alt="message" />
+                    </div>
+                    <div class="header_icon_container">
+                        <img src="/public/geo.svg" alt="geo" />
+                    </div>
+                    <div class="header_icon_container">
+                        <img src="/public/task.svg" alt="task" />
+                    </div>
+                    <div class="header_icon_container">
+                        <img src="/public/docs.svg" alt="docs" />
+                    </div>
+                    <div class="header_icon_container">
+                        <img src="/public/eye.svg" alt="eye" />
+                    </div>
+                </div>
+                <div class="header_person">
+                    <img src="/public/person.svg" alt="avatar" />
+                    <div>
+                        <strong>Перельман Г.Я.</strong>
+                        <p>Гость</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <main class="main">
+        <div class="side_bar">
+            <div class="menu">
+                <div class="menu-item">
+                    <div class="menu-item__title">
+                        <img src="/public/vacation.svg" alt="requests" />
+                        <p>Мои отпуска</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item__title">
+                        <img src="/public/requests.svg" alt="requests" />
+                        <p>Мои заявления</p>
+                        <div class="spisok_icon">
+                            <img src="/public/spisok.svg" />
+                        </div>
+                    </div>
+                    <div class="item_desc">
+                        <div class="under_item">
+                            <p>Заявления</p>
+                            <p>Подать заявление</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item__title active_title">
+                        <img src="/public/calend.svg" alt="requests" />
+                        <p>Планирование</p>
+                        <div class="spisok_icon">
+                            <img src="/public/spisok.svg" />
+                        </div>
+                    </div>
+                    <div class="item_desc">
+                        <div class="under_item">
+                            <p>Ваш план</p>
+                            <p class="active_under_item">Запланировать</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="plan_and_count">
+                <div class="plan">
+                    <p class="page_title">Запланировать</p>
+                    <div class="choose_year">
+                        <p>Год</p>
+                        <div class="width-68 mobile-width-88 year-select">
+                            <div id="selectedYear" class="main-year-select" data-selected-position=""
+                                data-selected-id="" data-department-planning="" onclick="showAllYears('yearSelect')"
+                                style="background-image: url('/public/down_arrow.svg')">год</div>
+                            <div id="yearSelect" class=" " style="display: none;">
+                                <div class="year-select__activeOption">
+                                    <div onclick="updateSelectedValueYear(1)" class="year-select__option 4" id="1">
+                                        2023</div>
+                                </div>
+                                <div class="year-select__activeOption">
+                                    <div onclick="updateSelectedValueYear(2)" class="year-select__option 6" id="2">
+                                        2022</div>
+                                </div>
+                                <div class="year-select__activeOption">
+                                    <div onclick="updateSelectedValueYear(3)" class="year-select__option 15" id="3">
+                                        2021</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work_place">
+                        <p>Место работы</p>
+                        <div class="width-68 mobile-width-88 department-select">
+                            <div id="selectedDepartment" class="main-department-select" data-selected-position=""
+                                data-selected-id="" data-department-planning=""
+                                onclick="showAllDepartmentOptions('deptSelect')"
+                                style="background-image: url('/public/down_arrow.svg')">Выберите
+                                из списка</div>
+                            <div id="deptSelect" class=" " style="display: none;">
+                                <div class="department-select__activeOption">
+                                    <div onclick="updateSelectedValue(4)" class="department-select__option 4" id="4">
+                                        Центр
+                                        разработки ПО</div>
+                                </div>
+                                <div class="department-select__activeOption">
+                                    <div onclick="updateSelectedValue(6)" class="department-select__option 6" id="6">
+                                        Департамент информатизации и связи</div>
+                                </div>
+                                <div class="department-select__activeOption">
+                                    <div onclick="updateSelectedValue(15)" class="department-select__option 15" id="15">
+                                        Отдел аналитики и проектирования информационных систем</div>
+                                </div>
+                                <div class="department-select__activeOption">
+                                    <div onclick="updateSelectedValue(9)" class="department-select__option 9" id="9">
+                                        Отдел
+                                        разработки и технического сопровождения интернет-портала КФУ</div>
+                                </div>
+                                <div class="department-select__activeOption">
+                                    <div onclick="updateSelectedValue(5)" class="department-select__option 5" id="5">
+                                        Отдел
+                                        разработки информационных систем</div>
+                                </div>
+                                <div class="department-select__activeOption">
+                                    <div onclick="updateSelectedValue(16)" class="department-select__option 16" id="16">
+                                        Отдел тестирования программного обеспечения</div>
+                                </div>
+                                <div class="department-select__activeOption">
+                                    <div onclick="updateSelectedValue(10)" class="department-select__option 10" id="10">
+                                        Центр сопровождения ИТ-инфраструктуры</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vacation_dates work_place do_plan_page_margin">
+                        <p>Даты отпуска</p>
+                        <div class="data_input">
+                            <div class="data_input_text">
+                                <p>21.10.2024 - 30.10.2024</p>
+                                <p>9 дней</p>
+                            </div>
+                            <img src="/public/dates.svg" />
+                        </div>
+                    </div>
+                </div>
+                <diV class="count">
+                    <div class="count_items">
+                        <div class="count_item">
+                            <p>Количество неиспользованных дней <br />за все время работы:</p>
+                            <p class="days">56</p>
+                        </div>
+                        <div class="count_item">
+                            <p>На 2023 год запланировано:</p>
+                            <p class="days">28</p>
+                        </div>
+                        <div class="count_item">
+                            <p>Отгулено:</p>
+                            <p class="days">14</p>
+                        </div>
+                    </div>
+
+                </diV>
+            </div>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="table-column-number">Номер</th>
+                            <th class="table-column-data">Начало</th>
+                            <th>Конец</th>
+                            <th>Кол-во дней</th>
+                            <th>Статус</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>12</td>
+                            <td>21.10.23</td>
+                            <td>30.10.23</td>
+                            <td>19</td>
+                            <td>На рассмотрении</td>
+                            <td><img src="/public/table.svg" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="save">
+                <button class="btn_save">Сохранить</button>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
